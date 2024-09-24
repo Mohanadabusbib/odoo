@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acc_the_appointments,the.appointments,model_the_appointments,base.group_user,1,1,1,1
+acc_the_prescription,the.prescription,model_the_prescription,base.group_user,1,1,1,1
+acc_the_medicines,the.medicines,model_the_medicines,base.group_user,1,1,1,1
+

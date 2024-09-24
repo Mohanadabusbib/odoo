@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="mohanad_report" model="ir.actions.report">
+        <field name="name">Get Report</field>
+        <field name="model">my.app</field>
+        <field name="report_type">qweb-pdf</field>
+        <!-- <field name="report_type">qweb-html</field> -->
+        <field name="report_name">testapp.mohanad_report_view</field>
+        <field name="report_file">testapp.mohanad_report_view</field>
+        <field name="binding_model_id" ref="model_my_app" />
+        <field name="binding_type">report</field>
+    </record>
+    <template id="mohanad_report_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="my">
+                <t t-call="web.internal_layout">
+                <!-- <t t-call="web.external_layout"> -->
+                    <div class="page">
+                        <h1>Mohanad Report</h1>
+                        <p>
+                            Name:
+                            <span t-field="my.name"></span>
+                        </p>
+                        <p>
+                            Age:
+                            <span t-field="my.value"></span>
+                        </p>
+                        <p>
+                            Salary:
+                            <span t-field="my.value2"></span>
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

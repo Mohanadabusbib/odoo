@@ -1,0 +1,47 @@
+<!--<?xml version='1.0' encoding='utf-8'?>-->
+<!--<odoo>-->
+<!--    <record id="act_mma_list" model="ir.actions.act_window">-->
+<!--        <field name="name">List of Data</field>-->
+<!--        <field name="res_model">my.app</field>-->
+<!--        <field name="view_mode">tree</field>-->
+<!--        <field name="view_id" ref="testapp.testapp_mma_list"/>-->
+<!--    </record>-->
+<!--    <record id="act_mma_graph" model="ir.actions.act_window">-->
+<!--        <field name="name">List of Data</field>-->
+<!--        <field name="res_model">my.app</field>-->
+<!--        <field name="view_mode">graph</field>-->
+<!--    </record>-->
+<!--    <record id="act_mma_pivot" model="ir.actions.act_window">-->
+<!--        <field name="name">List of Data</field>-->
+<!--        <field name="res_model">my.app</field>-->
+<!--        <field name="view_mode">pivot</field>-->
+<!--    </record>-->
+
+<!--    <record id="mma_dash_board" model="ir.ui.view">-->
+<!--        <field name="name">Mohanad Dashboard</field>-->
+<!--        <field name="model">board.board</field>-->
+<!--        <field name="type">form</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <board style="2-1">-->
+<!--                <column>-->
+<!--                    <action string="the graph" name="%(act_mma_graph)d" height="150" width="450"/>-->
+<!--                    <action string="the pivot" name="%(act_mma_pivot)d" height="150" width="450"/>-->
+<!--                </column>-->
+<!--                <column>-->
+<!--                    <action string="the list" name="%(act_mma_list)d"/>-->
+<!--                </column>-->
+<!--            </board>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="open_board_action" model="ir.actions.act_window">-->
+<!--        <field name="name">Mohanad Dashboard</field>-->
+<!--        <field name="res_model">board.board</field>-->
+<!--        <field name="view_mode">form</field>-->
+<!--        <field name="usage">menu</field>-->
+<!--        <field name="view_id" ref="mma_dash_board" />-->
+<!--    </record>-->
+<!--    <menuitem-->
+<!--        name="Mohanad Dashboard" parent="testapp.testapp_mma_menu_root"-->
+<!--        id="mma_my_board" action="open_board_action" sequence="0"/>-->
+<!--</odoo>-->

@@ -1,0 +1,163 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="testapp_mma_list">
+      <field name="name">Mohanad list</field>
+      <field name="model">my.app</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value" string="Age"/>
+          <field name="value2" string="Salary" sum="salary"/>
+          <field name="description" decoration-bf="1"/>
+          <field name="trueFalse" string="isActive"/>
+          <field name="date" optional="show"/>
+          <field name="datetime" optional="hide"/>
+          <!-- <button name="440" type="action" string="Email" icon="fa-envelope"/> -->
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="testapp_mma_form">
+      <field name="name">Mohanad form</field>
+      <field name="model">my.app</field>
+      <field name="arch" type="xml">
+        <form string="My Form">
+          <header>
+            <button class="btn btn-primary" name="event_reviewed" string="Reviewed" invisible="state != 'new'" type="object" />
+            <button name="event_approved" string="Aproved" invisible="state != 'reviewed' "  type="object" />
+            <button name="event_rejected" string="Rejected" invisible="state != 'reviewed' " type="object" />
+            <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+            <h1>Section 1</h1>
+            <h2><field name="name" default_focus="1" placeholder='Enter Your Name'/></h2>
+            <hr/>
+            <group>
+              <group string="INFO 01">
+                <field name="value" string="Age" decoration-bf="1"/>
+                <field name="value2" string="Salary"/>
+                <field name="selection" string="Select"/>
+                
+              </group>
+              <group string="INFO 02">
+                <field name="trueFalse" string="isActive"/>
+                <field name="date"/>
+                <field name="datetime"/>
+              </group>
+            </group>
+            <group string="calculator">
+              <field name="col1"/>
+              <field name="col2"/>
+              <hr/> <br/>
+              <field name="result"/>
+              <field name="computed"/>
+            </group>
+            <notebook>
+              <page string="html schema">
+                <group>
+                    <field name="html"/>
+                </group>
+              </page>
+              <page string="notes">
+                <group>
+                  <field name="description"/>  
+                </group>
+                
+              </page>
+            </notebook>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" />
+            <field name="activity_ids" />
+            <field name="message_ids" />
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="testapp_mma_orders_form">
+      <field name="name">Order form</field>
+      <field name="model">my.order</field>
+      <field name="arch" type="xml">
+        <form string="My Orders">
+          <header>
+            <button name="get_query" string="Get Query" type="object" />
+            <button name="add_item" string="Add Item" type="object" invisible="state != 'ready'"/>
+            <button class="btn btn-primary" name="event_ready" string="Ready" invisible="state != 'new'" type="object" />
+            <field name="state" widget="statusbar"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name" string="Order Name"/>
+                <field name="datetime" string="Order Date"/>
+                <field name="isActive" string="is Active"/>
+                <field name="items_ids" string="Items"/>
+                <!-- <field name="items_ids"/>   -->
+              </group>
+              
+            </group>
+            
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" />
+            <field name="activity_ids" />
+            <field name="message_ids" />
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="testapp_mma_action_window">
+      <field name="name">mohanad</field>
+      <field name="res_model">my.app</field>
+      <field name="view_mode">tree,form,kanban,pivot</field>
+    </record>
+    <record model="ir.actions.act_window" id="testapp_orders_action_window">
+      <field name="name">orders</field>
+      <field name="res_model">my.order</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="testapp_items_action_window">
+      <field name="name">items</field>
+      <field name="res_model">my.order.items</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="testapp.action_server">
+      <field name="name">testapp server</field>
+      <field name="model_id" ref="model_testapp_testapp"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="Mohanad" id="testapp_mma_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Mohanad Main" id="testapp_menu_mma_main" parent="testapp_mma_menu_root" action="testapp_mma_action_window"/>
+    <menuitem name="My Orders" id="testapp_menu_mma_orders" parent="testapp_mma_menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Orders" id="testapp_menu_mma_order_list" parent="testapp_menu_mma_orders" action="testapp_orders_action_window"/>
+    <menuitem name="Items" id="testapp_menu_mma_order_item_list" parent="testapp_menu_mma_orders" action="testapp_items_action_window"/>
+
+  </data>
+</odoo>

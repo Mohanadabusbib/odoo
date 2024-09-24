@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.rule" id="appointment_record_rule">
+        <field name="name">doctor appointment</field>
+        <field name="model_id" ref="model_the_appointments"/>
+        <field name="domain_force">
+            ['|',('doctor_id.id','=',user.id),(user.is_supervisor,'=',True)]
+        </field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        <field name="perm_unlink" eval="True" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_read" eval="True" />
+        <field name="perm_create" eval="True" />
+    </record>
+</odoo>

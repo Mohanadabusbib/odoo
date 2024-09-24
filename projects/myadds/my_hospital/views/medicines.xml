@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Form view for "model" -->
+    <record id="the_medicines_form" model="ir.ui.view">
+        <field name="name">the.medicines.form</field>
+        <field name="model">the.medicines</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="effective_material" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="the_medicines_tree" model="ir.ui.view">
+        <field name="name">the.medicines.tree</field>
+        <field name="model">the.medicines</field>
+            <tree string="medicines">
+                <field name="name" />
+                <field name="effective_material" />
+            </tree>
+    </record>
+
+    
+    <record id="my_hospital.action_medicines" model="ir.actions.act_window">
+        <field name="name">medicines</field>
+        <field name="res_model">the.medicines</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add the first medicine...
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hospital_medicines" name="Medicines" 
+        parent="hospital_transactions" sequence="1" 
+        action="my_hospital.action_medicines"/>
+    
+    <!-- Search view for "model"
+    <record id="view_model_search" model="ir.ui.view">
+        <field name="name">view.model.search</field>
+        <field name="model">model</field>
+        <field name="type">search</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <search string="model_search">
+                <field name="name" />
+                
+            </search>
+        </field>
+    </record>
+    
+    
+    
+    Main menu for "model"
+    <record id="menu_model" model="ir.ui.menu" >
+        <field name="name">Human readable name</field>
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_model_act_window" />
+        <field name="parent_id" ref="base.menu_custom" />
+    </record> -->
+    
+</odoo>
